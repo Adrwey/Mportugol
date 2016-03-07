@@ -13,18 +13,22 @@
 		  fclose($arquivo);
 		
 		$lua = new Lua();
-$lua->eval(<<<CODE
+$saida = $lua->eval(<<<CODE
   
    local var = require "parser"
-   
+   local var2 = require "interpretador"
    var.interpreta("/var/www/html/mportugol/teste.por")
+   local f = var2.retornaSaida()
+   return f
    
 CODE
 );
-		}
+		
+         return $saida;     
+          }
 
 
-   modulo($code);
-   
+   $valorFinal = modulo($code);
+   echo "</br> A saída é: $valorFinal ";
    
 ?>

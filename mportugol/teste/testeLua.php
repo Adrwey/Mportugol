@@ -2,7 +2,7 @@
 <?php
 $lua = new Lua();
 $lua->eval(<<<CODE
-    print(2);
+    print("O LUA-PHP está funcionando");
 CODE
 );
 ?>
