@@ -71,20 +71,27 @@ local function decVar (v, ambiente)
 	tab.insereSimbolo(v.var.v, exp, ambiente) 
 end
 function retornaSaida()
-	return importante 
+	--local arImp = {1, 2, 3, 5, 32}
+	return importante
 end
 function execChamada (c, ambiente)
 	if c.nome.v == "saida" then
                 local f = io.output("/tmp/minhasaida.txt")
 		
 
-
+		local cont = 1
+		importante = {}
 		for i, v in ipairs(c.args) do
 			local exp = avalia(v, ambiente)
 			f:write(tostring(exp), " ")
-                        print(exp)
-			importante = exp	
+                        --print(exp)
+			importante[cont] = exp
+			cont = cont + 1
+			--importante, imp2, imp3, imp4 = exp
+                        -- xxx = {importante, imp2, imp3, imp4}	
 		end
+		--print(" aqui comeca algo ")
+		--print(importante[1]," ",importante[2], " ", importante[3]," ",importante[4]," ",importante[5] )
 		f:write("/n")
                 f:close()
 	elseif c.nome.v == "entrada" then
